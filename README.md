@@ -54,6 +54,17 @@ npm run worker            # order-worker (outro terminal)
 npm run web               # frontend (outro terminal)
 ```
 
+## Documentação
+
+- [Arquitetura](docs/ARCHITECTURE.md)
+- [Conceitos (idempotência, filas, otimização)](docs/CONCEPTS.md)
+
+## Testes
+
+```bash
+npm test
+```
+
 ## Licença
 
 MIT — uso educacional.
