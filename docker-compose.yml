@@ -1,0 +1,20 @@
+services:
+  localstack:
+    image: localstack/localstack:3.7
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=sqs
+      - DEBUG=0
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes:
+      - "./scripts/localstack-init.sh:/etc/localstack/init/ready.d/init-aws.sh"
+      - "localstack-data:/var/lib/localstack"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  localstack-data:
