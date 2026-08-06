@@ -16,7 +16,8 @@
     "dev": "tsc -p tsconfig.json --watch"
   },
   "dependencies": {
-    "@aws-sdk/client-sqs": "^3.758.0"
+    "@aws-sdk/client-sqs": "^3.758.0",
+    "dd-trace": "^5.40.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.10",

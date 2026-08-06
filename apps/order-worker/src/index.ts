@@ -1,6 +1,7 @@
 import {
   createSqsClient,
   deleteMessage,
+  initTracing,
   logger,
   parseOrderMessage,
   receiveOrderMessages,
@@ -27,7 +28,6 @@ async function pollOnce(): Promise<void> {
         messageId: message.MessageId,
         error: error instanceof Error ? error.message : String(error),
       });
-      // Leave message for retry / DLQ via visibility timeout + maxReceiveCount
     }
   }
 }
@@ -53,10 +53,14 @@ async function shutdown(signal: string): Promise<void> {
   process.exit(0);
 }
 
-process.on("SIGINT", () => void shutdown("SIGINT"));
-process.on("SIGTERM", () => void shutdown("SIGTERM"));
+async function main(): Promise<void> {
+  await initTracing("commerce-mesh-order-worker");
+  process.on("SIGINT", () => void shutdown("SIGINT"));
+  process.on("SIGTERM", () => void shutdown("SIGTERM"));
+  await loop();
+}
 
-loop().catch((error: unknown) => {
+main().catch((error: unknown) => {
   logger.error("worker crashed", {
     error: error instanceof Error ? error.message : String(error),
   });

@@ -1,4 +1,4 @@
-import { logger } from "@commerce-mesh/shared";
+import { initTracing, logger } from "@commerce-mesh/shared";
 import { buildApp } from "./app.js";
 import { closePool } from "./db.js";
 
@@ -6,6 +6,8 @@ const port = Number(process.env.PORT ?? 3001);
 const host = process.env.HOST ?? "0.0.0.0";
 
 async function main() {
+  await initTracing("commerce-mesh-orders-api");
+
   const app = await buildApp();
 
   const shutdown = async (signal: string) => {
