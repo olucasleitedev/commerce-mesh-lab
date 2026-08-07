@@ -4,7 +4,7 @@ import type { CreateOrderPayload, Order } from "./types";
 
 const defaultForm: CreateOrderPayload = {
   customerName: "Ana Silva",
-  productSku: "SKU-FLORA-01",
+  productSku: "SKU-MESH-01",
   quantity: 2,
   amountCents: 4990,
 };

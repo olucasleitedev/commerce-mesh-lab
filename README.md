@@ -1,8 +1,8 @@
 # Commerce Mesh Lab
 
 > **Projeto exclusivamente para fins de estudo.**  
-> Não possui vínculo com Grupo Boticário, Supabase, Datadog, AWS ou qualquer outra empresa.  
-> A stack e os padrões aqui explorados são inspirados em desafios reais de e-commerce assíncrono e servem apenas como laboratório de aprendizado.
+> Laboratório pessoal de aprendizado. Não representa produto, marca ou empresa real.  
+> A stack e os padrões explorados servem apenas para praticar e-commerce assíncrono, filas, idempotência e observabilidade.
 
 ## O que é
 
